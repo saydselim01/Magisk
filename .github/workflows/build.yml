@@ -1,39 +1,39 @@
-name: Magisk Build
+اسم.: بناء ماجيسك.
 
-on:
-  push:
-    branches: [master]
-    paths:
-      - "app/**"
-      - "native/**"
-      - "stub/**"
-      - "buildSrc/**"
-      - "build.py"
-      - "gradle.properties"
-      - ".github/workflows/build.yml"
-  pull_request:
-    branches: [master]
-  workflow_dispatch:
+على.:
+ دفع. :
+ الفروع. : [سيد.]
+ مسارات. :
+ - "التطبيق/**"
+ - "أصلي/**"
+ - "كعب/**"
+ - "بناء سيرك/**"
+ - "build.py"
+ - "Gradle.Properties"
+ - ..github/workflows/build.yml..github/workflows/build.yml"
+ سحب_طلب. :
+  الفروع.: [سيد.  ]
+ Workflow_dispatch. :
 
-jobs:
-  build:
-    name: Build Magisk artifacts
-    runs-on: ubuntu-latest
-    env:
-      SCCACHE_DIRECT: false
-    strategy:
-      fail-fast: false
-    steps:
-      - name: Check out
-        uses: actions/checkout@v4
+وظائف.:
+ بناء. :
+ اسم. : بناء القطع الأثرية ماجيسك
+ يعمل على. : أوبونتو-أحدث.
+ ENV. :
+ Sccache_direct. : كاذبة.
+ الاستراتيجية. :
+ فشل سريع. : كاذبة.
+ خطوات. :
+      - name: تحقق من.
+        uses: الإجراءات/الخروج @v4
         with:
           submodules: "recursive"
           fetch-depth: 0
 
-      - name: Setup environment
-        uses: ./.github/actions/setup
+      - name: بيئة الإعداد.
+        uses: ./.github/أفعال/إعداد
 
-      - name: Build release
+      - name: بناء الافراج.
         run: ./build.py -vr all
 
       - name: Build debug
